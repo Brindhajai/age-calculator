@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGE CALCULATOR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <h3>  AGE CALCULATOR</h3>
+      <span>NAME:</span><input type="text" placeholder="Enter Your Name" id="name" name="name">
+      <span>DOB:</span><input type="datetime-local" id="dob"><br>
+      <button name="submit" onclick="cal()">calculate</button>
+      <h4 id="person"></h4>
+      <h5 id="years"></h5>
+      <h5 id="months"></h5>
+      <h5 id="weeks"></h5>
+      <h5 id="days"></h5>
+      <h5 id="hour"></h5>
+      <h5 id="mins"></h5>
+      <h5 id="secs"></h5>
+    </div>
+    
+    <script>
+        function cal(){
+            let birthdate=document.getElementById("dob").value;
+            let day=new Date(birthdate),
+                time=day.getTime(),
+                today=new Date(),
+                timenow=today.getTime(),
+                value=timenow-time;
+                sec=Math.floor(value/1000),
+                min=Math.floor(sec/60),
+                hr=Math.floor(min/60),
+                days=Math.floor(hr/24),
+                week=Math.floor(days/7),
+                month=Math.floor(days/30.4375),
+                year=Math.floor(month/12);
+        
+        let insert=function(x,y){
+            document.getElementById(x).innerHTML=y;
+        }    
+        var person=document.getElementById("name").value
+       document.getElementById("person").innerHTML="Hi! "+person+" Your Age is ";
+
+        insert("years",year+"-years");
+        insert("months",month+"-months");
+        insert("weeks",week+"-weaks");
+        insert("days",days+"-days");
+        insert("hour",hr+"-hour");
+        insert("mins",min+"-minute");
+        insert("secs",sec+"-second");
+    }
+    </script>
+</body>
+</html>
